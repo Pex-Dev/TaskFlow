@@ -2,7 +2,16 @@
 @use '../base/mixins' as m;
 
 .perfil{
+    header{
+        .enlace{
+            margin-bottom: 1rem;
 
+            &.ocultar{
+                display: none;
+            }
+        }
+        
+    }
     .acciones{
         display: flex;
         justify-content: left;
@@ -15,6 +24,16 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
+
+            
         }
+
+        .editar, .cancelar, input[type="submit"]{
+            &.ocultar{
+                display: none;
+            }
+        }       
     }
+
+    
 }
