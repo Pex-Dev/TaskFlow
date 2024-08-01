@@ -1,0 +1,1 @@
+!function(){const e=document.querySelector("#mobile-menu");if(e){const t=document.querySelector(".barra-mobile"),o=t.querySelector(".contenido");e.addEventListener("click",(()=>{t.classList.toggle("activo"),o.classList.toggle("mostrar")}))}}();

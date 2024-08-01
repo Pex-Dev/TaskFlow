@@ -1,0 +1,88 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.contenedor-nueva-tarea{
+    display: flex;
+    justify-content: center;
+
+    .agregar-tarea{
+        @include m.boton(v.$cyan,v.$blanco)
+    }
+}
+
+.listado-tareas{
+    list-style: none;
+    padding: 0;
+
+    .no-tareas{
+        text-align: center;
+        margin-top: 3rem;
+        font-weight: 700;
+    }
+
+    .tarea{
+        padding: .5rem 2rem;
+        border-bottom: 2px solid darken($color: v.$grisClaro, $amount: 5%);
+        margin-bottom: 1rem;
+
+        @include m.tablet {            
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        &:last-of-type{
+            border: none;
+        }
+
+        .nombre-tarea{
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+
+            .editar-tarea{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                border: none;
+                background-color: transparent;
+                cursor: pointer;
+            }
+        }
+
+        .opciones{
+            display: flex;
+            gap: 1rem;
+            justify-content: space-between;
+            
+            button{
+                border: none;
+                font-size: 1rem;
+                padding: .7rem .7rem;
+                text-transform: uppercase;
+                font-weight: 700;
+                border-radius: 1rem;
+                cursor: pointer;
+                @include m.tablet {
+                    padding: .5rem .5rem; 
+                }
+
+                &.completa{
+                    background-color: v.$azul;
+                    color: v.$blanco
+                }
+
+                &.pendiente{
+                    background-color: v.$naranja;
+                    color: v.$blanco
+                }
+                
+                &.eliminar-tarea{
+                    background-color: v.$rojo;
+                    color: v.$blanco;
+                    border-radius: 5rem;
+                }
+            }
+        }
+    }
+}

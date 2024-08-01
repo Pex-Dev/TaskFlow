@@ -1,0 +1,13 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+.confirmar{
+    margin-top: 5rem;
+    .uptask{
+        @include m.textoDegradado(v.$morado,v.$naranja);
+    }
+    .boton{
+        @include m.boton(v.$morado,v.$blanco);
+        max-width: 20rem;
+        margin: 0 auto;
+    }
+}

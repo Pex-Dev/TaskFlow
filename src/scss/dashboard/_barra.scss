@@ -1,0 +1,113 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.barra-mobile{
+    background-color: v.$indigo;
+    padding: 2rem 4rem;
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+    max-height: 9.7rem;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+
+    &.activo{
+        max-height: 33.3rem;
+    }
+
+    @include m.tablet {
+        display: none;
+    }
+    
+    header{
+        display: flex;
+        justify-content: space-between;
+
+        h1{
+            color: v.$blanco;
+            font-size: 5rem;
+            margin: 0;
+            @include m.tablet {
+                font-size: 6rem;
+                margin-bottom: 1rem;
+            }
+        }       
+    }
+    .menu{
+        cursor: pointer;
+    }
+
+    .contenido{
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease-out;
+
+        &.mostrar{
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-nav{
+            margin-top: 2rem;
+            a{
+                color: v.$blanco;
+                display: block;
+                margin-bottom: 1rem;
+                padding: .7rem;
+                transition: background-color 300ms ease ;
+                font-size: 1.4rem;
+                text-transform: uppercase;
+
+                &:hover, &.activo{
+                    background-color: darken($color: v.$indigo, $amount: 18);
+                    border-radius: .5rem;
+                }            
+            }
+        }
+        .cerrar-sesion{
+            @include m.boton(darken(v.$indigo,20), v.$blanco);        
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.4rem;
+            padding: 1.3rem;
+            font-weight: 500;
+            border-radius: .5rem;
+            margin-top: 2rem;
+        }
+    }
+}
+
+.barra{
+    display: none;
+
+    @include m.tablet {
+        background-color: v.$blanco;
+        padding: 1rem 2rem;
+        box-shadow:  1px 12px 9px -13px rgba(0,0,0,.4);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    p{
+        margin: 0;
+        font-size: 1.4rem;
+        
+        span{
+            font-weight: 700;
+            color: v.$indigo;
+        }
+    }
+
+    .cerrar-sesion{
+        @include m.boton(darken(v.$indigo,20), v.$blanco);        
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-size: 1.4rem;
+        padding: 1.3rem;
+        font-weight: 500;
+        border-radius: .5rem;
+    }
+}
