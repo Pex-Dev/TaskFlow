@@ -60,7 +60,7 @@ class LoginController{
     public static function crear(Router $router){
         $usuario = new Usuario();//Crea objeto vacio
         $alertas = [];
-
+        
         //Se ejecuta cuando se mando algo por post
         if($_SERVER['REQUEST_METHOD']==='POST'){
             //Sincroniza datos de post con el objeto

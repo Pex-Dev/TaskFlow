@@ -8,6 +8,7 @@
         <?php foreach ($proyectos as $proyecto):?>
             <li class="proyecto">
                 <a href="/proyecto?id=<?php echo $proyecto -> url  ?>"><?php echo $proyecto -> proyecto  ?></a>
+                <a href="/eliminar-proyecto?id=<?php echo $proyecto -> url  ?>" class="eliminar-proyecto">Eliminar Proyecto</a>
             </li>
         <?php endforeach; ?>        
     </ul>

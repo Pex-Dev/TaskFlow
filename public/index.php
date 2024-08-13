@@ -34,6 +34,7 @@ $router -> get('/dashboard',[DashboardController::class,'index']);
 $router -> get('/crear-proyecto',[DashboardController::class,'crear_proyecto']);
 $router -> post('/crear-proyecto',[DashboardController::class,'crear_proyecto']);
 $router -> get('/proyecto',[DashboardController::class,'proyecto']);
+$router -> get('/eliminar-proyecto',[DashboardController::class,'eliminar_proyecto']);
 
 //Perfil del usuario
 $router -> get('/perfil',[DashboardController::class,'perfil']);

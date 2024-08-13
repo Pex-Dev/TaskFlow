@@ -21,6 +21,7 @@ class DashboardController{
             'proyectos' => $proyectos
         ]);
     }
+
     public static function crear_proyecto(Router $router){
         iniciarSesion();        
         isAuth();
@@ -56,6 +57,25 @@ class DashboardController{
             'alertas' => $alertas,
             'proyecto' => $proyecto
         ]);
+    }
+
+    public static function eliminar_proyecto(){
+        iniciarSesion();        
+        isAuth();
+
+        if($_SERVER['REQUEST_METHOD']==='GET'){            
+            //Obtener url del proyecto
+            $proyectoId = $_GET['id'];
+
+            //Redireccionar si no se encuetra un id
+            if(!$proyectoId) header('Location:/dashboard');
+
+            //Buscar proyecto en base a la url
+            $proyecto = Proyecto::where('url',$proyectoId);
+
+            $proyecto -> eliminar();
+            header('Location:/dashboard');      
+        }
     }
 
     public static function proyecto(Router $router){

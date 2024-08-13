@@ -22,19 +22,34 @@
 
     .proyecto{
         display: flex;
+        flex-direction: column;
         align-items: center;
         background-color: lighten($color: v.$indigo, $amount: 5);
         min-height: 12rem;    
         padding: 2rem;    
         line-height: 2;
         border-radius: .5rem;
+        @include m.tablet {
+            flex-direction: row;
+            justify-content: space-between;
+        }
 
         &:hover{
             background-color: darken($color: v.$indigo, $amount: 5);
         }
-
+        
         a{
             color: v.$blanco;
+        }
+
+        .eliminar-proyecto{
+            @include m.boton(v.$rojo,v.$blanco);
+            padding: .5rem;
+            border-radius: .5rem;
+            margin-top: 1.5rem;
+            @include m.tablet {
+                margin-top: 0;
+            }
         }
     }
 }

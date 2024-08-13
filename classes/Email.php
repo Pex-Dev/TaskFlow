@@ -4,6 +4,7 @@ namespace Classes;
 
 use PHPMailer\PHPMailer\PHPMailer;
 
+
 class Email{
     protected $email;
     protected $nombre;
@@ -17,7 +18,7 @@ class Email{
 
     public function enviarConfirmacion(){
         $contenido = "<html>";
-        $contenido .="<p><strong>Hola ". $this->nombre . "</strong> Has creado tu cuenta en Uptask, solo debes confirmarla en el siguiente enlace</p>";
+        $contenido .="<p>Hola<strong> ". $this->nombre . "</strong> Has creado tu cuenta en TaskOverflow, solo debes confirmarla en el siguiente enlace</p>";
         $contenido .="<p>Presiona aquí <a href='". $_ENV['APP_URL'] ."/confirmar?token=". $this->token ."'>Confirmar Cuenta</a> </p>";
         $contenido .= "<p>Si tu no creaste esta cuenta, solo ignora este mensaje</p>";
         $contenido .= "</html>";
@@ -27,7 +28,7 @@ class Email{
 
     public function enviarInstrucciones(){
         $contenido = "<html>";
-        $contenido .="<p><strong>Hola ". $this->nombre . "</strong> Has solicitado reestablecer tu contraseña, solo debes confirmarla en el siguiente enlace</p>";
+        $contenido .="<p>Hola<strong> ". $this->nombre . "</strong> Has solicitado reestablecer tu contraseña, para cambiarla en el siguiente enlace</p>";
         $contenido .="<p>Presiona aquí <a href='". $_ENV['APP_URL'] ."/reestablecer?token=". $this->token ."'>Reestablecer Contraseña</a> </p>";
         $contenido .= "<p>Si tu no solicitaste esto, ignora este mensaje</p>";
         $contenido .= "</html>";
@@ -44,8 +45,8 @@ class Email{
         $mail->Username = $_ENV['EMAIL_USER'];
         $mail->Password = $_ENV['EMAIL_PASS'];
 
-        $mail -> set('cuentas@uptask.com');
-        $mail -> addAddress('cuentas@uptask.com','uptask.com');
+        $mail -> setFrom($_ENV['EMAIL_SENDER']);
+        $mail -> addAddress($this->email,$this->nombre);
         $mail -> Subject = $subject;
         $mail -> isHTML(TRUE);
         $mail -> CharSet = 'UTF-8';
